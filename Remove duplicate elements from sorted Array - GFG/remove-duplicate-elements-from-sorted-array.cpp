@@ -11,35 +11,31 @@ using namespace std;
 class Solution{
 public:
     int remove_duplicate(int arr[],int n){
-        // code here
-        // int arr[n];
-        // int cnt=0;
-        // for(int i=0;i<n-1;i++)
+       //BRUTE --------------------------->TC : O(N)+O(NlogN)
+        // set<int>set;
+        // for(int i=0;i<n;i++)
         // {
-        //     if(a[i]==a[i+1]){
-        //         cnt++;
-        //     }
-            
+        //     set.insert(arr[i]);//----------------->O(NlongN)
         // }
-        // if(cnt==1)
+        // int index=0;
+        // for(int x:set)
         // {
-        //     for(int i=0;i<n-1;i++)
-        //     {
-        //     a[i]=arr[i];
-        //     }
+        //  arr[index]=x;
+        // index++;
         // }
-        set<int>set;
-        for(int i=0;i<n;i++)
-        {
-            set.insert(arr[i]);
-        }
-        int index=0;
-        for(int x:set)
-        {
-         arr[index++]=x;
+        // return index;
         
+        //OPTIMAL --------------->2 pointer 
+        int i=0;
+        for(int j=1;j<n;j++)
+        {
+            if(arr[j]!=arr[i])
+            {
+                arr[i+1]=arr[j];
+                i++;
+            }
         }
-        return index;
+        return i+1;
     }
 };
 
